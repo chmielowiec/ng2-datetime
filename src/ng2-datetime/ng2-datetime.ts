@@ -172,7 +172,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
 
     private init(): void {
         if (!this.datepicker && this.datepickerOptions !== false) {
-            let options = jQuery.extend({enableOnReadonly: !this.readonly}, this.datepickerOptions);
+            let options = jQuery.extend({enableOnReadonly: this.readonly}, this.datepickerOptions);
             this.datepicker = (<any>$('#' + this.idDatePicker)).datepicker(options);
             this.datepicker
                 .on('changeDate', (e: any) => {
