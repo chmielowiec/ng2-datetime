@@ -17,7 +17,7 @@ const CUSTOM_ACCESSOR = {
     template: `
         <div class="ng2-datetime">
             <div [ngClass]="{ 'input-group': !datepickerOptions.hideIcon, 'date': true }">
-                <input id="{{idDatePicker}}" type="text" class="form-control"
+                <input id="{{idDatePicker}}" type="text" class="form-control" autocomplete="off"
                        [attr.readonly]="readonly || null"
                        [attr.required]="required || null"
                        [attr.placeholder]="datepickerOptions.placeholder || 'Choose date'"
@@ -32,7 +32,7 @@ const CUSTOM_ACCESSOR = {
                 </div>
             </div>
             <div [ngClass]="{ 'input-group': !timepickerOptions.hideIcon, 'bootstrap-timepicker timepicker': true }">
-                <input id="{{idTimePicker}}" type="text" class="form-control input-small"
+                <input id="{{idTimePicker}}" type="text" class="form-control input-small" autocomplete="off"
                        [attr.readonly]="readonly || null"
                        [attr.required]="required || null"
                        [attr.placeholder]="timepickerOptions.placeholder || 'Set time'"
