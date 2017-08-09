@@ -16,7 +16,8 @@ const CUSTOM_ACCESSOR = {
     providers: [CUSTOM_ACCESSOR],
     template: `
         <div class="ng2-datetime">
-            <div [ngClass]="{ 'input-group': !datepickerOptions.hideIcon, 'date': true }">
+            <div [ngClass]="{ 'input-group': !datepickerOptions.hideIcon, 'date': true }"
+                 [hidden]="!datepickerOptions">
                 <input id="{{idDatePicker}}" type="text" class="form-control" autocomplete="off"
                        [attr.readonly]="readonly || null"
                        [attr.required]="required || null"
@@ -31,7 +32,8 @@ const CUSTOM_ACCESSOR = {
                     <span [ngClass]="datepickerOptions.icon || 'glyphicon glyphicon-th'"></span>
                 </div>
             </div>
-            <div [ngClass]="{ 'input-group': !timepickerOptions.hideIcon, 'bootstrap-timepicker timepicker': true }">
+            <div [ngClass]="{ 'input-group': !timepickerOptions.hideIcon, 'bootstrap-timepicker timepicker': true }"
+                 [hidden]="!timepickerOptions">
                 <input id="{{idTimePicker}}" type="text" class="form-control input-small" autocomplete="off"
                        [attr.readonly]="readonly || null"
                        [attr.required]="required || null"
@@ -73,11 +75,11 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     idTimePicker: string = uniqueId('q-timepicker_');
 
     onChange = (_: any) => {
-    }
+    };
 
     @HostListener('blur')
     onTouched = () => {
-    }
+    };
 
     @HostBinding('attr.tabindex')
     get tabindexAttr(): string | undefined {
