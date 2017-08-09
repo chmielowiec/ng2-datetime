@@ -87,7 +87,9 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     }
 
     ngAfterViewInit() {
-        this.init();
+        setTimeout(() => {
+            this.init();
+        });
     }
 
     ngOnDestroy() {
