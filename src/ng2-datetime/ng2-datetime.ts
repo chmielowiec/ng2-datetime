@@ -228,7 +228,9 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
             (<any>$('#' + this.idTimePicker)).parent().remove();
         }
 
-        this.updateModel(this.date);
+        if (isDate(this.date)) {
+            this.updateModel(this.date);
+        }
     }
 
     private updateModel(date: Date): void {
