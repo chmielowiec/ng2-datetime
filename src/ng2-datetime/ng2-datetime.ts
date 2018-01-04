@@ -87,9 +87,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     }
 
     ngAfterViewInit() {
-        setTimeout(() => {
-            this.init();
-        });
+        this.init();
     }
 
     ngOnDestroy() {
@@ -127,13 +125,13 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     }
 
     writeValue(value: any) {
-        this.date = value;
-        if (isDate(this.date)) {
-            setTimeout(() => {
+        if (this.date !== value) {
+            this.date = value;
+            if (isDate(this.date)) {
                 this.updateModel(this.date);
-            }, 0);
-        } else {
-            this.clearModels();
+            } else {
+                this.clearModels();
+            }
         }
     }
 
@@ -170,6 +168,10 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
 
     showDatepicker() {
         this.datepicker.datepicker('show');
+    }
+
+    setDisabledState( isDisabled : boolean ) : void {
+        this.readonly = isDisabled;
     }
 
     //////////////////////////////////
