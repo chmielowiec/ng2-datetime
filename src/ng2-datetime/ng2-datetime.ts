@@ -1,6 +1,13 @@
 import {
-    Component, Input, HostListener, AfterViewInit, OnDestroy,
-    SimpleChanges, OnChanges, HostBinding, forwardRef
+    AfterViewInit,
+    Component,
+    forwardRef,
+    HostBinding,
+    HostListener,
+    Input,
+    OnChanges,
+    OnDestroy,
+    SimpleChanges
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ITimepickerEvent} from './ITimepickerEvent';
@@ -87,7 +94,9 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
     }
 
     ngAfterViewInit() {
-        this.init();
+        setTimeout(() => {
+            this.init();
+        });
     }
 
     ngOnDestroy() {
@@ -170,7 +179,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
         this.datepicker.datepicker('show');
     }
 
-    setDisabledState( isDisabled : boolean ) : void {
+    setDisabledState(isDisabled: boolean): void {
         this.readonly = isDisabled;
     }
 
@@ -269,6 +278,7 @@ export class NKDatetime implements ControlValueAccessor, AfterViewInit, OnDestro
 }
 
 let id = 0;
+
 function uniqueId(prefix: string): string {
     return prefix + ++id;
 }
